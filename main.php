@@ -1,17 +1,23 @@
 <?php
 abstract class Animal
 {
-    abstract public function getId();
+    function getId()
+    {
+    	return $this->id;
+    }
     
-    abstract public function getType();
+    function getType()
+    {
+    	return $this->type;
+    }
     
     abstract public function collectProducts();
 }
 
 class Cow extends Animal
 {
-    private $id;
-    private $type;
+    protected $id;
+    protected $type;
     private $maxAmount;
     private $minAmount;
     
@@ -23,16 +29,6 @@ class Cow extends Animal
         $this->maxAmount = 12;
     }
     
-    function getId()
-    {
-    	return $this->id;
-    }
-    
-    function getType()
-    {
-    	return $this->type;
-    }
-    
     function collectProducts()
     {
     	return ["name" => "milk", "amount" => rand($this->minAmount, $this->maxAmount)];
@@ -42,8 +38,8 @@ class Cow extends Animal
 
 class Chicken extends Animal
 {
-	private $id;
-    private $type;
+	protected $id;
+    protected $type;
     private $maxAmount;
     private $minAmount;
     
@@ -53,16 +49,6 @@ class Chicken extends Animal
         $this->type = $type;
         $this->minAmount = 0;
         $this->maxAmount = 1;
-    }
-    
-    function getId()
-    {
-    	return $this->id;
-    }
-    
-    function getType()
-    {
-    	return $this->type;
     }
     
     function collectProducts()
